@@ -57,6 +57,10 @@ namespace WX.DMApi.Core
             services.AddDbContext<OrderContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
             services.AddScoped<IOrderService, OrderService>();
 
+            #region “¿¿µ◊¢»Î
+            services.AddSingleton<IQRCode, RaffQRCode>();
+            #endregion
+
             #region swagger
             services.AddSwaggerGen(c =>
                 {

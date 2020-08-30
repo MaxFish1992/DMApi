@@ -38,5 +38,13 @@
             <param name="orderJson"></param>
             <returns></returns>
         </member>
+        <member name="M:WX.DMApi.Core.Controllers.QRCodeController.GetQRCode(System.String,System.Int32)">
+            <summary>
+            获取二维码
+            </summary>
+            <param name="url">存储内容</param>
+            <param name="pixel">像素大小</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
