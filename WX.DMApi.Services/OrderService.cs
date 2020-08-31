@@ -71,6 +71,7 @@ namespace WX.DMApi.Services
                 //old.VIN = orderInfo.VIN;
                 old.ProductNumber = orderInfo.ProductNumber;
                 old.OrderDate = orderInfo.OrderDate;
+                old.DeliveryDate = orderInfo.DeliveryDate;
                 old.CustomerName = orderInfo.CustomerName;
                 old.CustomerPhone = orderInfo.CustomerPhone;
                 old.Drawing = orderInfo.Drawing;

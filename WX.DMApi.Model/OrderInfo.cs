@@ -22,6 +22,11 @@ namespace WX.DMApi.Model
         [Column("OrderDate")]
         public string OrderDate { get; set; }
         /// <summary>
+        /// 交货期
+        /// </summary>
+        [Column("DeliveryDate")]
+        public string DeliveryDate { get; set; }
+        /// <summary>
         /// 客户名称
         /// </summary>
         [Column("CustomerName")]
