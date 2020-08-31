@@ -46,5 +46,33 @@
             <param name="pixel">像素大小</param>
             <returns></returns>
         </member>
+        <member name="M:WX.DMApi.Core.Controllers.QRCodeController.QRCodeImage(System.String,System.Int32)">
+            <summary>
+            获取二维码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.QRCodeController.getqrcord">
+            <summary>
+            接收二维码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.UserController.AddUser(System.String,System.String,System.Int32)">
+            <summary>
+            注册用户
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <param name="authority"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.UserController.GetPassword(System.String)">
+            <summary>
+            获取用户密码
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

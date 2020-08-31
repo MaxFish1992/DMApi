@@ -52,10 +52,23 @@ namespace WX.DMApi.Core
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //配置跨域处理，允许所有来源：
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyMethod()
+                        .SetIsOriginAllowed(_ => true)
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                }));
+
             services.AddControllers();
 
             services.AddDbContext<OrderContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
             services.AddScoped<IOrderService, OrderService>();
+
+            services.AddDbContext<UserContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
+            services.AddScoped<IUserService, UserService>();
 
             #region 依赖注入
             services.AddSingleton<IQRCode, RaffQRCode>();
@@ -79,12 +92,6 @@ namespace WX.DMApi.Core
                 });
 
             #endregion
-
-            //配置跨域处理，允许所有来源：
-            services.AddCors(options =>
-                options.AddPolicy("cors",
-                    p => p.AllowAnyOrigin())
-            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -107,6 +114,9 @@ namespace WX.DMApi.Core
 
             #endregion
 
+            // 设置允许所有来源跨域
+            app.UseCors("CorsPolicy");
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -119,7 +129,7 @@ namespace WX.DMApi.Core
 
         //private static void Listener_ScanerEvent(ScanerHook.ScanerCodes codes)
         //{
-            
+
         //}
     }
 }

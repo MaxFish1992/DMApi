@@ -68,13 +68,40 @@ namespace WX.DMApi.Services
 
             if (old != null)
             {
-                old.VIN = orderInfo.VIN;
+                //old.VIN = orderInfo.VIN;
                 old.ProductNumber = orderInfo.ProductNumber;
+                old.OrderDate = orderInfo.OrderDate;
+                old.CustomerName = orderInfo.CustomerName;
+                old.CustomerPhone = orderInfo.CustomerPhone;
                 old.Drawing = orderInfo.Drawing;
                 old.Blanking = orderInfo.Blanking;
                 old.CloseCompartment = orderInfo.CloseCompartment;
                 old.Qualified = orderInfo.Qualified;
                 old.LeaveFactory = orderInfo.LeaveFactory;
+                old.ABS = orderInfo.ABS;
+                old.Axle = orderInfo.Axle;
+                old.BackDoorType = orderInfo.BackDoorType;
+                old.CarriageColor = orderInfo.CarriageColor;
+                old.FloorMaterial = orderInfo.FloorMaterial;
+                old.FloorThickness = orderInfo.FloorThickness;
+                old.HasAdjustingArm = orderInfo.HasAdjustingArm;
+                old.HasAirSuspension = orderInfo.HasAirSuspension;
+                old.Height = orderInfo.Height;
+                old.HydraulicBrand = orderInfo.HydraulicBrand;
+                old.HydraulicModel = orderInfo.HydraulicModel;
+                old.Length = orderInfo.Length;
+                old.Width = orderInfo.Width;
+                old.Mark = orderInfo.Mark;
+                old.PlateSpringBrand = orderInfo.PlateSpringBrand;
+                old.PlateSpringThickness = orderInfo.PlateSpringThickness;
+                old.PlateSpringNum = orderInfo.PlateSpringNum;
+                old.SideBoardMaterial = orderInfo.SideBoardMaterial;
+                old.SideBoardThickness = orderInfo.SideBoardThickness;
+                old.TireBrand = orderInfo.TireBrand;
+                old.TireShape = orderInfo.TireShape;
+                old.TireNum = orderInfo.TireNum;
+                old.SteelRingMaterial = orderInfo.SteelRingMaterial;
+                old.SteelRingNum = orderInfo.SteelRingNum;
                 state = Context.SaveChanges() > 0;
             }
 
