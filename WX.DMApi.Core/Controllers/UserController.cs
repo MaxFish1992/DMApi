@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using WX.DMApi.IServices;
 using WX.DMApi.Model;
 
@@ -63,8 +64,8 @@ namespace WX.DMApi.Core.Controllers
         /// <param name="userName"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("getpassword")]
-        public ActionResult<string> GetPassword(string userName)
+        [Route("getuser")]
+        public ActionResult<string> GetUser(string userName)
         {
             if (string.IsNullOrEmpty(userName))
             {
@@ -73,7 +74,7 @@ namespace WX.DMApi.Core.Controllers
 
             var result = UserService.GetUserByName(userName);
             
-            return result.Password;
+            return JsonConvert.SerializeObject(result);
         }
 
         [HttpGet]
