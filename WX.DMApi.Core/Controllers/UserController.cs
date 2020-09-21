@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using WX.DMApi.IServices;
 using WX.DMApi.Model;
+using WX.DMApi.Util;
 
 namespace WX.DMApi.Core.Controllers
 {
@@ -15,10 +17,11 @@ namespace WX.DMApi.Core.Controllers
     public class UserController : ControllerBase
     {
         private IUserService UserService;
-
-        public UserController(IUserService userService)
+        private readonly IConfiguration _configuration;
+        public UserController(IUserService userService, IConfiguration configuration)
         {
             UserService = userService;
+            _configuration = configuration;
         }
         /// <summary>
         /// 注册用户
@@ -73,7 +76,7 @@ namespace WX.DMApi.Core.Controllers
             }
 
             var result = UserService.GetUserByName(userName);
-            
+
             return JsonConvert.SerializeObject(result);
         }
 
@@ -84,5 +87,40 @@ namespace WX.DMApi.Core.Controllers
             var users = UserService.GetUsers().ToList();
             return new JsonResult(users);
         }
+
+        //登录操作
+        [HttpGet]
+        [Route("login")]
+        public string Login(string userName, string password)
+        {
+            UserMsg msg = new UserMsg()
+            {
+                Mark = 0,
+                Msg = "",
+                Token = "",
+            };
+
+            UserInfo user = UserService.GetUserByName(userName);
+            //string password_form = _common.Get_MD5_Method1(model.password);
+
+            if (user != null && user.Password == password)
+            {
+                JwtTokenUtil jwtTokenUtil = new JwtTokenUtil(_configuration);
+                string token = jwtTokenUtil.GetToken(user);   //生成token
+                //var headers = new HttpResponseMessage().Headers;
+                //headers.Add("Authorization",token);
+
+                msg.Mark = 1;
+                msg.Msg = "登录成功";
+                msg.Token = token;
+                msg.Authority = user.Authority;
+            }
+            else
+            {
+                msg.Msg = "用户名或者密码错误";
+            }
+            return JsonConvert.SerializeObject(msg);
+        }
     }
 }
+
