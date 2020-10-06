@@ -19,6 +19,14 @@
             <param name="fileName"></param>
             <returns></returns>
         </member>
+        <member name="M:WX.DMApi.Core.Controllers.DownloadController.GetImage(System.String,System.String)">
+            <summary>
+            访问图片
+            </summary>
+            <param name="width">所访问图片的宽度,高度自动缩放,大于原图尺寸或者小于等于0返回原图</param>
+            <param name="name">所要访问图片的名称或者相对地址</param>
+            <returns>图片</returns>
+        </member>
         <member name="P:WX.DMApi.Core.Controllers.DownloadFileInfo.FileName">
             <summary>
             文件名
