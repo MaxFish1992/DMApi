@@ -70,6 +70,9 @@ namespace WX.DMApi.Core
             services.AddDbContext<OrderContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
             services.AddScoped<IOrderService, OrderService>();
 
+            services.AddDbContext<ZxcOrderContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
+            services.AddScoped<IZxcOrderService, ZxcOrderService>();
+
             services.AddDbContext<UserContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
             services.AddScoped<IUserService, UserService>();
 

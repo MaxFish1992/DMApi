@@ -8,7 +8,7 @@ using WX.DMApi.Services.DataContext;
 namespace WX.DMApi.Services
 {
     /// <summary>
-    /// 订单数据服务
+    /// 半挂车订单数据服务
     /// </summary>
     public class OrderService : IOrderService
     {

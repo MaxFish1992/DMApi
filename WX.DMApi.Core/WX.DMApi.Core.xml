@@ -109,5 +109,39 @@
             <param name="userName"></param>
             <returns></returns>
         </member>
+        <member name="M:WX.DMApi.Core.Controllers.ZxcOrderController.GetAll">
+            <summary>
+            获取所有订单信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ZxcOrderController.GetSingle(System.String)">
+            <summary>
+            获取单个订单信息
+            </summary>
+            <param name="vin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ZxcOrderController.Add(System.String)">
+            <summary>
+            添加订单信息
+            </summary>
+            <param name="orderJson"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ZxcOrderController.Delete(System.String)">
+            <summary>
+            删除订单信息
+            </summary>
+            <param name="orderJson"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ZxcOrderController.Update(System.String)">
+            <summary>
+            更新订单信息
+            </summary>
+            <param name="orderJson"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

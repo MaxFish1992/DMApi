@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WX.DMApi.Model
 {
     /// <summary>
-    /// 订单信息
+    /// 半挂车订单信息
     /// </summary>
-    [Table("Order_Table")]
+    [Table("order_table")]
     public class OrderInfo
     {
         /// <summary>
