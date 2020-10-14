@@ -76,6 +76,9 @@ namespace WX.DMApi.Core
             services.AddDbContext<UserContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
             services.AddScoped<IUserService, UserService>();
 
+            services.AddDbContext<MenuContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
+            services.AddScoped<IMenuService, MenuService>();
+
             #region “¿¿µ◊¢»Î
             services.AddSingleton<IQRCode, RaffQRCode>();
             #endregion

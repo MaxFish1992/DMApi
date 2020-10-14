@@ -32,6 +32,13 @@
             文件名
             </summary>
         </member>
+        <member name="M:WX.DMApi.Core.Controllers.MenuController.GetMenuByAuthority(System.Int32)">
+            <summary>
+            获取菜单项
+            </summary>
+            <param name="authority"></param>
+            <returns></returns>
+        </member>
         <member name="M:WX.DMApi.Core.Controllers.OrderController.GetAll">
             <summary>
             获取所有订单信息
