@@ -27,9 +27,10 @@ namespace WX.DMApi.Core.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("getmenu")]
-        public string GetMenuByAuthority(int authority)
+        public JsonResult GetMenuByAuthority(int authority)
         {
-            return JsonConvert.SerializeObject(MenuService.GetMenuByAuthority(authority));
+            var result = new JsonResult(MenuService.GetMenuByAuthority(authority));
+            return result;
         }
     }
 }
