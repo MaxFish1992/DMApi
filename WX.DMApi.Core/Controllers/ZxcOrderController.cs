@@ -42,17 +42,16 @@ namespace WX.DMApi.Core.Controllers
         /// <summary>
         /// 添加订单信息
         /// </summary>
-        /// <param name="orderJson"></param>
+        /// <param name="orderInfo"></param>
         /// <returns></returns>
-        [HttpGet("add")]
-        public string Add(string orderJson)
+        [HttpPost("add")]
+        public string Add(ZxcOrderInfo orderInfo)
         {
-            var order = JsonConvert.DeserializeObject<ZxcOrderInfo>(orderJson);
-            if (OrderService.Exist(order))
+            if (OrderService.Exist(orderInfo))
             {
                 return "该VIN已存在";
             }
-            var state = OrderService.Add(order);
+            var state = OrderService.Add(orderInfo);
             if (state)
             {
                 return "添加成功";
@@ -65,10 +64,10 @@ namespace WX.DMApi.Core.Controllers
         /// </summary>
         /// <param name="orderJson"></param>
         /// <returns></returns>
-        [HttpGet("delete")]
-        public string Delete(string orderJson)
+        [HttpPost("delete")]
+        public string Delete(ZxcOrderInfo orderInfo)
         {
-            var state = OrderService.Delete(JsonConvert.DeserializeObject<ZxcOrderInfo>(orderJson));
+            var state = OrderService.Delete(orderInfo);
             if (state)
             {
                 return "删除成功";
@@ -81,11 +80,11 @@ namespace WX.DMApi.Core.Controllers
         /// </summary>
         /// <param name="orderJson"></param>
         /// <returns></returns>
-        [HttpGet("update")]
+        [HttpPost("update")]
         [DisableRequestSizeLimit]
-        public string Update(string orderJson)
+        public string Update(ZxcOrderInfo orderInfo)
         {
-            var orderInfo = JsonConvert.DeserializeObject<ZxcOrderInfo>(orderJson);
+            //var orderInfo = JsonConvert.DeserializeObject<ZxcOrderInfo>(orderJson);
             var state = OrderService.Update(orderInfo);
             if (state)
             {

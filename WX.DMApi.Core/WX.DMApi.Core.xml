@@ -163,21 +163,21 @@
             <param name="vin"></param>
             <returns></returns>
         </member>
-        <member name="M:WX.DMApi.Core.Controllers.ZxcOrderController.Add(System.String)">
+        <member name="M:WX.DMApi.Core.Controllers.ZxcOrderController.Add(WX.DMApi.Model.ZxcOrderInfo)">
             <summary>
             添加订单信息
             </summary>
-            <param name="orderJson"></param>
+            <param name="orderInfo"></param>
             <returns></returns>
         </member>
-        <member name="M:WX.DMApi.Core.Controllers.ZxcOrderController.Delete(System.String)">
+        <member name="M:WX.DMApi.Core.Controllers.ZxcOrderController.Delete(WX.DMApi.Model.ZxcOrderInfo)">
             <summary>
             删除订单信息
             </summary>
             <param name="orderJson"></param>
             <returns></returns>
         </member>
-        <member name="M:WX.DMApi.Core.Controllers.ZxcOrderController.Update(System.String)">
+        <member name="M:WX.DMApi.Core.Controllers.ZxcOrderController.Update(WX.DMApi.Model.ZxcOrderInfo)">
             <summary>
             更新订单信息
             </summary>
