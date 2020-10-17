@@ -22,7 +22,7 @@ namespace WX.DMApi.Model
         /// 订单日期
         /// </summary>
         [Column("OrderDate")]
-        public string ProductDate { get; set; }
+        public string OrderDate { get; set; }
         /// <summary>
         /// 交货期
         /// </summary>

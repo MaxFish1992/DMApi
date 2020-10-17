@@ -42,5 +42,7 @@ namespace WX.DMApi.IServices
         /// <param name="orderInfo"></param>
         /// <returns></returns>
         bool Update(OrderInfo orderInfo);
+
+        bool Exist(OrderInfo productInfo);
     }
 }

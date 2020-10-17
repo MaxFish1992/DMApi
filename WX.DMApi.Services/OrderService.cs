@@ -108,5 +108,15 @@ namespace WX.DMApi.Services
 
             return state;
         }
+
+        /// <summary>
+        /// 判断当前VIN是否存在
+        /// </summary>
+        /// <param name="productInfo"></param>
+        /// <returns></returns>
+        public bool Exist(OrderInfo productInfo)
+        {
+            return Context.Orders.Any(x => x.VIN.Equals(productInfo.VIN));
+        }
     }
 }

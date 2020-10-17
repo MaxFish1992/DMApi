@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.EntityFrameworkCore;
@@ -67,6 +68,12 @@ namespace WX.DMApi.Core
 
             services.AddControllers();
 
+            services.AddDbContext<ProductContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
+            services.AddScoped<IProductService, ProductService>();
+
+            services.AddDbContext<ZxcProductContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
+            services.AddScoped<IZxcProductService, ZxcProductService>();
+
             services.AddDbContext<OrderContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
             services.AddScoped<IOrderService, OrderService>();
 
@@ -78,6 +85,12 @@ namespace WX.DMApi.Core
 
             services.AddDbContext<MenuContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
             services.AddScoped<IMenuService, MenuService>();
+
+            ///配置文件大小限制
+            services.Configure<FormOptions>(options =>
+            {
+                options.MultipartBodyLengthLimit = 60000000;
+            });
 
             #region 依赖注入
             services.AddSingleton<IQRCode, RaffQRCode>();

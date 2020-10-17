@@ -47,7 +47,12 @@ namespace WX.DMApi.Core.Controllers
         [HttpGet("add")]
         public string Add(string orderJson)
         {
-            var state = OrderService.Add(JsonConvert.DeserializeObject<OrderInfo>(orderJson));
+            var order = JsonConvert.DeserializeObject<OrderInfo>(orderJson);
+            if (OrderService.Exist(order))
+            {
+                return "该VIN已存在";
+            }
+            var state = OrderService.Add(order);
             if (state)
             {
                 return "添加成功";

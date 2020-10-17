@@ -73,6 +73,40 @@
             <param name="orderJson"></param>
             <returns></returns>
         </member>
+        <member name="M:WX.DMApi.Core.Controllers.ProductController.GetAll">
+            <summary>
+            获取所有订单信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ProductController.GetSingle(System.String)">
+            <summary>
+            获取单个订单信息
+            </summary>
+            <param name="vin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ProductController.Add(System.String)">
+            <summary>
+            添加订单信息
+            </summary>
+            <param name="productJson"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ProductController.Delete(System.String)">
+            <summary>
+            删除订单信息
+            </summary>
+            <param name="productJson"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ProductController.Update(System.String)">
+            <summary>
+            更新订单信息
+            </summary>
+            <param name="productJson"></param>
+            <returns></returns>
+        </member>
         <member name="M:WX.DMApi.Core.Controllers.QRCodeController.GetQRCode(System.String,System.Int32)">
             <summary>
             获取二维码
@@ -148,6 +182,40 @@
             更新订单信息
             </summary>
             <param name="orderJson"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ZxcProductController.GetAll">
+            <summary>
+            获取所有订单信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ZxcProductController.GetSingle(System.String)">
+            <summary>
+            获取单个订单信息
+            </summary>
+            <param name="vin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ZxcProductController.Add(System.String)">
+            <summary>
+            添加订单信息
+            </summary>
+            <param name="productJson"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ZxcProductController.Delete(System.String)">
+            <summary>
+            删除订单信息
+            </summary>
+            <param name="productJson"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WX.DMApi.Core.Controllers.ZxcProductController.Update(System.String)">
+            <summary>
+            更新订单信息
+            </summary>
+            <param name="productJson"></param>
             <returns></returns>
         </member>
     </members>

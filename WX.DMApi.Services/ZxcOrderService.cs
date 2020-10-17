@@ -50,7 +50,7 @@ namespace WX.DMApi.Services
             if (old != null)
             {
                 old.ProductNumber = orderInfo.ProductNumber;
-                old.ProductDate = orderInfo.ProductDate;
+                old.OrderDate = orderInfo.OrderDate;
                 old.DeliveryDate = orderInfo.DeliveryDate;
                 old.CustomerName = orderInfo.CustomerName;
                 old.CustomerPhone = orderInfo.CustomerPhone;
@@ -72,6 +72,15 @@ namespace WX.DMApi.Services
             }
 
             return state;
+        }
+        /// <summary>
+        /// 判断当前VIN是否存在
+        /// </summary>
+        /// <param name="productInfo"></param>
+        /// <returns></returns>
+        public bool Exist(ZxcOrderInfo productInfo)
+        {
+            return Context.Orders.Any(x => x.FloorNumber.Equals(productInfo.FloorNumber));
         }
     }
 }

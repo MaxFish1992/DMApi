@@ -26,13 +26,13 @@ namespace WX.DMApi.Model
         /// <summary>
         /// VIN号
         /// </summary>
-        [Column("VinNumber")]
-        public string VinNumber { get; set; }
+        [Column("VINNum")]
+        public string VINNum { get; set; }
         /// <summary>
         /// 下料
         /// </summary>
-        [Column("Blacking")]
-        public string Blacking { get; set; }
+        [Column("Blanking")]
+        public string Blanking { get; set; }
         /// <summary>
         /// 边板
         /// </summary>

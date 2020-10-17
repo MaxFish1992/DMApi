@@ -6,43 +6,43 @@ using WX.DMApi.Model;
 namespace WX.DMApi.IServices
 {
     /// <summary>
-    /// 自卸车订单服务接口
+    /// 自卸车生产进度数据服务接口
     /// </summary>
-   public interface IZxcOrderService
+    public interface IZxcProductService
     {
         /// <summary>
-        /// 获取所有订单信息
+        /// 获取所有生产信息
         /// </summary>
         /// <returns></returns>
-        IEnumerable<ZxcOrderInfo> GetAll();
+        IEnumerable<ZxcProductInfo> GetAll();
 
         /// <summary>
-        /// 根据VIN获取订单信息
+        /// 根据VIN获取生产信息
         /// </summary>
         /// <param name="vin"></param>
         /// <returns></returns>
-        ZxcOrderInfo GetSingle(string vin);
+        ZxcProductInfo GetSingle(string vin);
 
         /// <summary>
-        /// 添加订单信息
+        /// 添加生产信息
         /// </summary>
         /// <param name="orderInfo"></param>
         /// <returns></returns>
-        bool Add(ZxcOrderInfo orderInfo);
+        bool Add(ZxcProductInfo orderInfo);
 
         /// <summary>
-        /// 删除订单信息
+        /// 删除生产信息
         /// </summary>
         /// <param name="orderInfo"></param>
         /// <returns></returns>
-        bool Delete(ZxcOrderInfo orderInfo);
+        bool Delete(ZxcProductInfo orderInfo);
 
         /// <summary>
-        /// 更新订单信息
+        /// 更新生产信息
         /// </summary>
         /// <param name="orderInfo"></param>
         /// <returns></returns>
-        bool Update(ZxcOrderInfo orderInfo);
-        bool Exist(ZxcOrderInfo productInfo);
+        bool Update(ZxcProductInfo orderInfo);
+        bool Exist(ZxcProductInfo productInfo);
     }
 }
