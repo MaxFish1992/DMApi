@@ -18,6 +18,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NLog.Extensions.Logging;
 using WX.DMApi.IServices;
 using WX.DMApi.Services;
 using WX.DMApi.Services.DataContext;
@@ -27,29 +28,10 @@ namespace WX.DMApi.Core
 {
     public class Startup
     {
-        //private ScanerHook listener = new ScanerHook();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-            //listener.ScanerEvent += Listener_ScanerEvent;
-            //listener.Start();
-
-            //进程退出事件
-            //AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
-            //卸载事件
-            //AssemblyLoadContext.Default.Unloading += Default_Unloading;
         }
-
-        //private void Default_Unloading(AssemblyLoadContext obj)
-        //{
-        //    listener.Stop();
-        //}
-
-        //private void CurrentDomain_ProcessExit(object sender, EventArgs e)
-        //{
-        //    listener.Stop();
-        //}
 
         public IConfiguration Configuration { get; }
 
@@ -86,11 +68,11 @@ namespace WX.DMApi.Core
             services.AddDbContext<MenuContext>(options => options.UseMySql(Configuration.GetConnectionString("DMConnection")));
             services.AddScoped<IMenuService, MenuService>();
 
-            ///配置文件大小限制
-            services.Configure<FormOptions>(options =>
-            {
-                options.MultipartBodyLengthLimit = 60000000;
-            });
+            //配置文件大小限制
+            //services.Configure<FormOptions>(options =>
+            //{
+            //    options.MultipartBodyLengthLimit = 60000000;
+            //});
 
             #region 依赖注入
             services.AddSingleton<IQRCode, RaffQRCode>();
@@ -131,8 +113,10 @@ namespace WX.DMApi.Core
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddNLog();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -162,10 +146,5 @@ namespace WX.DMApi.Core
                 endpoints.MapControllers();
             });
         }
-
-        //private static void Listener_ScanerEvent(ScanerHook.ScanerCodes codes)
-        //{
-
-        //}
     }
 }

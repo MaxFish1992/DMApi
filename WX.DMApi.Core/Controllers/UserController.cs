@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using WX.DMApi.IServices;
 using WX.DMApi.Model;
@@ -18,10 +19,12 @@ namespace WX.DMApi.Core.Controllers
     {
         private IUserService UserService;
         private readonly IConfiguration _configuration;
-        public UserController(IUserService userService, IConfiguration configuration)
+        private ILogger<UserController> _logger;
+        public UserController(IUserService userService, IConfiguration configuration, ILogger<UserController> logger)
         {
             UserService = userService;
             _configuration = configuration;
+            _logger = logger;
         }
         /// <summary>
         /// 注册用户
@@ -114,6 +117,7 @@ namespace WX.DMApi.Core.Controllers
                 msg.Msg = "登录成功";
                 msg.Token = token;
                 msg.Authority = user.Authority;
+                _logger.LogInformation("用户" + user.UserName + "登录红象智能数字管理系统......");
             }
             else
             {

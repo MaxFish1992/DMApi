@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using WX.DMApi.IServices;
 using WX.DMApi.Model;
@@ -15,10 +16,12 @@ namespace WX.DMApi.Core.Controllers
     public class ZxcOrderController : ControllerBase
     {
         public IZxcOrderService OrderService;
+        private ILogger<ZxcOrderController> _logger;
 
-        public ZxcOrderController(IZxcOrderService orderService)
+        public ZxcOrderController(IZxcOrderService orderService, ILogger<ZxcOrderController> logger)
         {
             OrderService = orderService;
+            _logger = logger;
         }
         /// <summary>
         /// 获取所有订单信息
@@ -47,17 +50,28 @@ namespace WX.DMApi.Core.Controllers
         [HttpPost("add")]
         public string Add(ZxcOrderInfo orderInfo)
         {
-            if (OrderService.Exist(orderInfo))
+            try
             {
-                return "该VIN已存在";
+                if (OrderService.Exist(orderInfo))
+                {
+                    _logger.LogInformation("该订单VIN已存在，无法重复添加:" + orderInfo.FloorNumber);
+                    return "该VIN已存在，无法重复添加";
+                }
+                var state = OrderService.Add(orderInfo);
+                if (state)
+                {
+                    _logger.LogInformation("添加订单信息成功:" + orderInfo.FloorNumber);
+                    return "添加成功";
+                }
+
+                return "添加失败";
             }
-            var state = OrderService.Add(orderInfo);
-            if (state)
+            catch (Exception ex)
             {
-                return "添加成功";
+                _logger.LogError("添加订单信息失败", ex);
+                return "添加失败";
             }
 
-            return "添加失败";
         }
         /// <summary>
         /// 删除订单信息
@@ -67,13 +81,23 @@ namespace WX.DMApi.Core.Controllers
         [HttpPost("delete")]
         public string Delete(ZxcOrderInfo orderInfo)
         {
-            var state = OrderService.Delete(orderInfo);
-            if (state)
+            try
             {
-                return "删除成功";
+                var state = OrderService.Delete(orderInfo);
+                if (state)
+                {
+                    _logger.LogInformation("删除订单信息成功:" + orderInfo.FloorNumber);
+                    return "删除成功";
+                }
+
+                return "删除失败";
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("删除订单信息失败", ex);
+                return "删除失败";
             }
 
-            return "删除失败";
         }
         /// <summary>
         /// 更新订单信息
@@ -84,14 +108,23 @@ namespace WX.DMApi.Core.Controllers
         [DisableRequestSizeLimit]
         public string Update(ZxcOrderInfo orderInfo)
         {
-            //var orderInfo = JsonConvert.DeserializeObject<ZxcOrderInfo>(orderJson);
-            var state = OrderService.Update(orderInfo);
-            if (state)
+            try
             {
-                return "更新成功";
+                var state = OrderService.Update(orderInfo);
+                if (state)
+                {
+                    _logger.LogInformation("更新订单信息成功:" + orderInfo.FloorNumber);
+                    return "更新成功";
+                }
+
+                return "更新失败";
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("更新订单信息失败", ex);
+                return "更新失败";
             }
 
-            return "更新失败";
         }
     }
 }

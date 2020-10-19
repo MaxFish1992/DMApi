@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace WX.DMApi.Core.Controllers
 {
@@ -14,11 +15,26 @@ namespace WX.DMApi.Core.Controllers
     public class UploadController : ControllerBase
     {
         private static string _vin = string.Empty;
+        private ILogger<UploadController> _logger;
+
+        public UploadController(ILogger<UploadController> logger)
+        {
+            _logger = logger;
+        }
+
         [HttpGet("setvin")]
         public string SetVin(string vin)
         {
-            _vin = vin;
-            return _vin;
+            try
+            {
+                _vin = vin;
+                return _vin;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("设置工艺图VIN失败",ex);
+                return "设置工艺图VIN失败";
+            }
         }
         /// <summary>
         /// 上传图片到服务器
@@ -53,6 +69,7 @@ namespace WX.DMApi.Core.Controllers
                         {
                             await file.CopyToAsync(stream);
                         }
+                        _logger.LogInformation(strpath + "------工艺图上传成功");
                     }
                     data.Msg = "上传成功";
                     return true;
