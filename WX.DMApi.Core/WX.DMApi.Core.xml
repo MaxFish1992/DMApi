@@ -79,6 +79,14 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WX.DMApi.Core.Controllers.ProductController.GetProductsByDate(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
         <member name="M:WX.DMApi.Core.Controllers.ProductController.GetSingle(System.String)">
             <summary>
             获取单个订单信息

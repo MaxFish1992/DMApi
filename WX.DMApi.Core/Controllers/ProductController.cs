@@ -32,6 +32,23 @@ namespace WX.DMApi.Core.Controllers
         {
             return JsonConvert.SerializeObject(ProductService.GetAll().ToList());
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        [HttpGet("getproductbydate")]
+        public string GetProductsByDate(DateTime? start, DateTime? end)
+        {
+            if (start == null || end == null || start > end)
+            {
+                return GetAll();
+            }
+            var result = JsonConvert.SerializeObject(ProductService.GetProductsByDate(start, end));
+            return result;
+        }
         /// <summary>
         /// 获取单个订单信息
         /// </summary>
@@ -58,6 +75,8 @@ namespace WX.DMApi.Core.Controllers
                     _logger.LogInformation("该VIN已存在,无法重复添加:" + product.VINNum);
                     return "该VIN已存在,无法重复添加";
                 }
+
+                //product.ProductDate = product.ProductDate.Split('T')[0];
                 var state = ProductService.Add(product);
                 if (state)
                 {
@@ -124,7 +143,7 @@ namespace WX.DMApi.Core.Controllers
                 _logger.LogError("更新生产信息失败", ex);
                 return "更新失败";
             }
-            
+
         }
     }
 }

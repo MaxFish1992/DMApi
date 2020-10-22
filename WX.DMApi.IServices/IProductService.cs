@@ -22,7 +22,13 @@ namespace WX.DMApi.IServices
         /// <param name="vin"></param>
         /// <returns></returns>
         ProductInfo GetSingle(string vin);
-
+        /// <summary>
+        /// 根据日期获取生产列表
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        IEnumerable<ProductInfo> GetProductsByDate(DateTime? start, DateTime? end);
         /// <summary>
         /// 添加生产信息
         /// </summary>

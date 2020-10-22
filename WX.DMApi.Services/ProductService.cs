@@ -73,5 +73,15 @@ namespace WX.DMApi.Services
         {
             return Context.Products.Any(x => x.VINNum.Equals(productInfo.VINNum));
         }
+        /// <summary>
+        /// 根据时间段获取生产列表
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public IEnumerable<ProductInfo> GetProductsByDate(DateTime? start, DateTime? end)
+        {
+            return Context.Products.ToList().FindAll(x => x.ProductDate >= start && x.ProductDate <= end);
+        }
     }
 }

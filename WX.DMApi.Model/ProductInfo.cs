@@ -19,6 +19,11 @@ namespace WX.DMApi.Model
         [Column("Id")]
         public int Id { get; set; }
         /// <summary>
+        /// 生产日期
+        /// </summary>
+        [Column("ProductDate")]
+        public DateTime? ProductDate { get; set; }
+        /// <summary>
         /// 合同号
         /// </summary>
         [Column("ContractNum")]

@@ -49,6 +49,7 @@ namespace WX.DMApi.Services
                 old.BackDoor = productInfo.BackDoor;
                 old.Blanking = productInfo.Blanking;
                 old.CloseCompartments = productInfo.CloseCompartments;
+                old.ProductDate = productInfo.ProductDate;
                 old.ContractNum = productInfo.ContractNum;
                 old.FinalAssembly = productInfo.FinalAssembly;
                 old.Floor = productInfo.Floor;
