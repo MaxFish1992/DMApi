@@ -30,7 +30,7 @@ namespace WX.DMApi.Core.Controllers
         [HttpGet("getall")]
         public string GetAll()
         {
-            return JsonConvert.SerializeObject(ProductService.GetAll().ToList());
+            return JsonConvert.SerializeObject(ProductService.GetAll().ToList().OrderByDescending(x => x.ProductDate));
         }
 
         /// <summary>
