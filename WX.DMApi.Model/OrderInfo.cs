@@ -127,6 +127,11 @@ namespace WX.DMApi.Model
         [Column("ABS")]
         public string ABS { get; set; }
         /// <summary>
+        /// 牵引销类型,50或者90
+        /// </summary>
+        [Column("TractionPin")]
+        public string TractionPin { get; set; }
+        /// <summary>
         /// 轮胎品牌
         /// </summary>
         [Column("TireBrand")]

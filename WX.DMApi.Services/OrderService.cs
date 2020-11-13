@@ -80,6 +80,7 @@ namespace WX.DMApi.Services
                 old.Qualified = orderInfo.Qualified;
                 old.LeaveFactory = orderInfo.LeaveFactory;
                 old.ABS = orderInfo.ABS;
+                old.TractionPin = orderInfo.TractionPin;
                 old.Axle = orderInfo.Axle;
                 old.BackDoorType = orderInfo.BackDoorType;
                 old.CarriageColor = orderInfo.CarriageColor;
